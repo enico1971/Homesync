@@ -11,7 +11,8 @@ jobs:
     steps:
       - name: Send Ping to Supabase RPC
         run: |
-        curl -i -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/rpc/get_household" \
-  -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+          curl -i -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/rpc/get_household" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
             -H "Content-Type: application/json" \
             -d '{"p_code": "PING-000", "p_client_key": "github-actions-ping"}'
